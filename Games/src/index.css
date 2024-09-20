@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.logo{
+    display: flex;
+    justify-content: center;
+}
+@media (max-width: 897px) { 
+    .formL{
+        width: 80%;
+    }
+ }
+
+ .cG{
+    width: 300px;
+    height: 400px;
+ }
+ /*efecto olograma*/
+
+.contenedor-linea {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recomendados {
+    position: relative;
+    width: 25%; /* Ancho fijo para cada article */
+    transition: all 0.3s ease;
+    padding-left: 1px;
+}
+
+.recomendados img:first-child {
+    box-shadow: 0 60px 60px -60px rgba(0, 30, 255, 0.5);
+    border-radius: 4px;
+    object-fit: cover;
+    width: 150%; /* Ancho aumentado para la imagen */
+}
+
+.recomendados img:last-child {
+    position: absolute;
+    width: 200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateY(25%);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.recomendados:hover {
+    transform: perspective(250px) rotateX(10deg) translateY(-5%) translateZ(0);
+}
+
+.recomendados::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(
+        to bottom,
+        transparent 10%,
+        rgba(0, 0, 0, 0.5) 50%,
+        rgba(0, 0, 0) 95%
+    );
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.recomendados:hover::before {
+    opacity: 1;
+}
+
+.recomendados:hover img:last-child {
+    opacity: 1;
+    transform: translateY(10%);
+}
+.image-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.704);
+    color: white;
+    transition: opacity 0.3s ease-in-out;
+    text-align: center;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+.image-container:hover .overlay {
+    opacity: 1;
+}
