@@ -22,7 +22,10 @@ jobs:
           ls
           cd server
           npm install
+      
       - name: Run the app
         env:
           MONGO_DB_URL: ${{ secrets.MONGO_DB_URL }}  # Aquí se accede al secreto
-        run: node app.js
+        run: |
+          cd server
+          node app.js
