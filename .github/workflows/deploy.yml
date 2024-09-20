@@ -1,0 +1,25 @@
+name: Configurar
+
+on: 
+  push:
+    branches:
+      - main
+
+
+
+jobs:
+  instalar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.4
+        with:
+          node-version: latest
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: install dependencies
+        run: npm install
+      - name: Run the app
+        env:
+          MONGO_DB_URL: ${{ secrets.MONGO_DB_URL }}  # Aquí se accede al secreto
+        run: node app.js
